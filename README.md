@@ -33,7 +33,7 @@ DATABASES = {
 ```
 
 ### Middleware
-Configuramos un middleware que se encarga de definir la bd a usar según el cliente. Path: `multitenant_poc.middleware.TenantMiddleware`, donde obtenemos y seteamos la db según el `SERVER_NAME`. Esta variable se setea desde `mod_wsgi`.
+Configuramos un middleware que se encarga de definir la bd a usar según el cliente: `multitenant_poc.middleware.TenantMiddleware`, donde obtenemos y seteamos la db según el `SERVER_NAME`. Esta variable se setea desde `mod_wsgi`.
 ```python
     db = request.META.get('SERVER_NAME').split('.')[0]
     setattr(THREAD_LOCAL, "DB", db)
