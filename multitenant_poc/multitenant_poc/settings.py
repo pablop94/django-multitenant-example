@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'main_app',
 ]
 
@@ -45,6 +46,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'multitenant_poc.middleware.TenantMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -75,6 +77,7 @@ WSGI_APPLICATION = 'multitenant_poc.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+    'default': {},
     "client1": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "client1",
@@ -92,6 +95,8 @@ DATABASES = {
         "PORT": "25432",
     }
 }
+
+DATABASE_ROUTERS = ['multitenant_poc.router.TenantDatabaseRouter']
 
 
 # Password validation
