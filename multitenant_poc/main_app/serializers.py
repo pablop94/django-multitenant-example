@@ -1,9 +1,9 @@
 from rest_framework.serializers import ModelSerializer
 
-from main_app.models import Perro
+from main_app.models import Dog
 
 
-class PerroSerializer(ModelSerializer):
+class DogSerializer(ModelSerializer):
   class Meta:
-    model = Perro
+    model = Dog
     fields = '__all__'
