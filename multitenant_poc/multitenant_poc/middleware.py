@@ -1,6 +1,5 @@
 import threading
 from django.db import connections
-from multitenant_poc.utils import tenant_db_from_request
 
 THREAD_LOCAL = threading.local()
 
@@ -9,7 +8,7 @@ class TenantMiddleware:
     self.get_response = get_response
 
   def __call__(self, request):
-    db = tenant_db_from_request(request)
+    db = request.META.get('SERVER_NAME').split('.')[0]
     setattr(THREAD_LOCAL, "DB", db)
     response = self.get_response(request)
     return response
