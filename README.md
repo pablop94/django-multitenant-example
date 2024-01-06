@@ -91,3 +91,8 @@ En esos archivos se configura mod_wsgi para que apunte a `multitenant_poc.wsgi.p
 **Importante** Se debe configurar `WSGIApplicationGroup %{GLOBAL}` para evitar problemas al cargar psycopg2, ya que si no se configura así, nos da error porque psycopg2 se puede cargar 1 vez por intérprete de python.
 
 A modo de ejemplo dejo la configuración de mpm-event en `apache/conf-available/`
+
+
+## Fuente
+[Building Multi Tenant Applications with
+Django Documentation](https://readthedocs.org/projects/building-multi-tenant-applications-with-django/downloads/pdf/latest/)
